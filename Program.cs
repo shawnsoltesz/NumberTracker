@@ -15,6 +15,11 @@ namespace NumberTracker
 
 
             var fileReader = new StreamReader("numbers.csv");
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                HasHeaderRecord = false,
+            };
+            var csvReader = new CsvReader(fileReader, config);
 
             // - Create an empty list of numbers.
             var numbers = new List<int>();
