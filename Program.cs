@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace NumberTracker
@@ -44,6 +45,10 @@ namespace NumberTracker
                     numbers.Add(number);
                 }
             }
+
+
+            var fileWriter = new StreamWriter("numbers.csv");
         }
+
     }
 }
