@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Globalization;
+using CsvHelper;
 
 namespace NumberTracker
 {
@@ -10,6 +12,9 @@ namespace NumberTracker
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Number Tracker");
+
+
+            var fileReader = new StreamReader("numbers.csv");
 
             // - Create an empty list of numbers.
             var numbers = new List<int>();
@@ -46,8 +51,10 @@ namespace NumberTracker
                 }
             }
 
-
             var fileWriter = new StreamWriter("numbers.csv");
+            var csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
+            csvWriter.WriteRecords(numbers);
+            fileWriter.Close();
         }
 
     }
